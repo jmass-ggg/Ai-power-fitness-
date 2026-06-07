@@ -1,0 +1,231 @@
+==============================================================
+  MOVEMATE AI — YOUTUBE UPLOAD GUIDE
+  Everything you need to upload your demo video
+==============================================================
+
+
+──────────────────────────────────────────────────────────────
+  VIDEO TITLE
+──────────────────────────────────────────────────────────────
+
+MoveMate AI — Free AI Personal Trainer That Watches You Work Out | Hackathon Demo 2026
+
+
+──────────────────────────────────────────────────────────────
+  DESCRIPTION (copy and paste this entire block)
+──────────────────────────────────────────────────────────────
+
+MoveMate AI is a free, browser-based AI personal trainer I built
+for the Walter Payton College Prep Coding Club Health and Fitness
+Technology Hackathon 2026.
+
+Most teenagers who want to get fit face the same problem:
+personal trainers cost $50–$150 per session, generic workout apps
+give everyone the same plan, and nobody is watching your form
+when you work out alone at home. Bad form leads to injury and
+most people quit within weeks.
+
+MoveMate AI solves all of this using just your laptop webcam and
+artificial intelligence — completely free, no download required.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT IT DOES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Generates a personalised multi-week workout plan based on
+   your age, weight, height, fitness goal and timeline
+
+✅ Uses Google MediaPipe AI to track 33 points on your body
+   through your webcam at 30 frames per second
+
+✅ Draws a real-time skeleton overlay so you can see every
+   joint being tracked
+
+✅ Automatically counts your reps using real joint angle
+   mathematics — squats only count if your knee goes below
+   105 degrees and back above 160 degrees
+
+✅ Gives live form feedback on screen — "Keep chest up",
+   "Go lower", "Keep body straight"
+
+✅ Scores your form out of 100% updated in real time
+
+✅ Tracks calories burned, workout streaks, and progress
+   over time
+
+✅ All AI runs 100% in the browser — your webcam video is
+   never uploaded anywhere (fully private)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXERCISES SUPPORTED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Squat
+• Push-up
+• Sit-up
+• Jumping Jack
+• Plank (with hold timer and form alarm)
+• Lunge
+• Burpee
+• Mountain Climber
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TECH STACK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Frontend: React 19 + Vite
+• AI / Pose Detection: Google MediaPipe Tasks Vision (WASM)
+• Backend: Django 6 + Django REST Framework
+• Database: PostgreSQL
+• Auth: JWT tokens in secure HttpOnly cookies
+• Infrastructure: Docker + Nginx
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VIDEO CHAPTERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+0:00 — Introduction
+0:20 — The Problem We Are Solving
+0:40 — Sign Up and Profile Setup
+1:10 — AI Generates Your Personal Workout Plan
+1:30 — Dashboard Overview
+1:45 — Starting the AI Webcam Workout
+2:05 — Live Skeleton Tracking and Rep Counting
+2:45 — Real-Time Form Correction
+3:00 — Workout Results and Progress Tracking
+3:15 — Closing and Impact
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BUILT FOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Walter Payton College Prep Coding Club Hackathon 2026
+Category: Health and Fitness Technology / Machine Learning & AI
+Challenge: Create useful technology to help improve public health with AI
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHY THIS MATTERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A personal trainer costs more than most teenagers can afford.
+MoveMate AI gives everyone with a laptop access to real-time
+form correction that used to only be available to athletes
+with expensive coaches. No gym. No equipment. No subscription.
+Just open the website and work out.
+
+#hackathon #AI #fitness #machinelearning #mediapipe #react
+#django #personaltrainer #healthtech #python #webdev
+#artificialintelligence #posedetection #workout #coding
+
+
+──────────────────────────────────────────────────────────────
+  TAGS (paste into the YouTube Tags field)
+──────────────────────────────────────────────────────────────
+
+AI fitness app, personal trainer AI, mediapipe pose detection,
+workout app, rep counter AI, form correction AI, hackathon 2026,
+health technology, fitness technology, machine learning fitness,
+browser AI, react fitness app, django fitness, free personal trainer,
+pose estimation, webcam workout, AI exercise counter, student hackathon,
+coding project, health and fitness AI, real time pose detection
+
+
+──────────────────────────────────────────────────────────────
+  THUMBNAIL TEXT (what to write on your thumbnail image)
+──────────────────────────────────────────────────────────────
+
+Main text:    "AI Counts Your Reps"
+Sub text:     "Free • No App • Just Your Webcam"
+Bottom text:  "MoveMate AI"
+
+Use a screenshot of the webcam view showing the green
+skeleton overlay on your body as the background image.
+That is the most eye-catching and proves it is real.
+
+
+──────────────────────────────────────────────────────────────
+  CATEGORY
+──────────────────────────────────────────────────────────────
+
+Category: Science & Technology
+
+
+──────────────────────────────────────────────────────────────
+  VISIBILITY
+──────────────────────────────────────────────────────────────
+
+Set to: Public
+(Judges need to be able to watch it without signing in)
+
+
+──────────────────────────────────────────────────────────────
+  LANGUAGE
+──────────────────────────────────────────────────────────────
+
+Video language: English
+
+
+──────────────────────────────────────────────────────────────
+  STEP BY STEP — HOW TO UPLOAD
+──────────────────────────────────────────────────────────────
+
+1. Go to https://youtube.com
+2. Click your profile picture (top right)
+3. Click "YouTube Studio"
+4. Click the "CREATE" button (top right, camera icon)
+5. Click "Upload video"
+6. Drag your video file in or click "SELECT FILES"
+7. While it uploads, fill in:
+     - Title: copy from the TITLE section above
+     - Description: copy from the DESCRIPTION section above
+     - Thumbnail: upload your screenshot with skeleton overlay
+     - Tags: copy from the TAGS section above
+     - Category: Science & Technology
+     - Language: English
+8. Click "NEXT" through the details screens
+9. On "Visibility" — select PUBLIC
+10. Click "PUBLISH"
+11. Copy the video URL from the address bar
+    It will look like: https://www.youtube.com/watch?v=XXXXXXXXXXX
+12. Paste that URL into your hackathon submission form
+
+
+──────────────────────────────────────────────────────────────
+  YOUR SUBMISSION LINK FORMAT
+──────────────────────────────────────────────────────────────
+
+When the hackathon form asks for your video link, paste:
+
+  https://www.youtube.com/watch?v=YOUR_VIDEO_ID_HERE
+
+When it asks for your project link, paste your GitHub URL or
+hosted site URL.
+
+When it asks for a pitch / description, use this:
+
+  "MoveMate AI is a free browser-based AI personal trainer
+  that uses Google MediaPipe pose detection running directly
+  in the browser to count reps, correct form in real time,
+  and generate personalised workout plans — making professional
+  fitness coaching accessible to every teenager, not just
+  those who can afford it. Built with React, Django, and
+  MediaPipe. No app required, no data uploaded, completely
+  private and free."
+
+
+──────────────────────────────────────────────────────────────
+  CHECKLIST BEFORE SUBMITTING
+──────────────────────────────────────────────────────────────
+
+  [ ] Video is uploaded and set to PUBLIC (not unlisted)
+  [ ] You can open the YouTube link without being signed in
+  [ ] The skeleton overlay is clearly visible in the video
+  [ ] The rep counter visibly goes up during the demo
+  [ ] The form score is visible on screen
+  [ ] You explained the problem in the video
+  [ ] You explained why it is impactful
+  [ ] Title and description are filled in
+  [ ] Video is under 5 minutes (judges watch many videos)
+  [ ] Your name is mentioned in the video or description
+
+==============================================================

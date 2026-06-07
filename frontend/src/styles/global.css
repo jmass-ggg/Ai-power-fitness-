@@ -1,0 +1,1589 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #050505;
+  color: white;
+  font-family: Inter, Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #111111 0%, #050505 100%);
+}
+
+/* NAVBAR */
+
+.nav {
+  height: 58px;
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #222;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* BUTTONS */
+
+.btn {
+  border: 0;
+  border-radius: 18px;
+  padding: 9px 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.light {
+  background: white;
+  color: black;
+}
+
+.ghost,
+.dark {
+  background: #1f1f22;
+  color: white;
+}
+
+.big {
+  padding: 13px 20px;
+  border-radius: 12px;
+}
+
+/* LANDING */
+
+.hero {
+  max-width: 900px;
+  margin: auto;
+  padding: 100px 20px 70px;
+  text-align: center;
+}
+
+.pill {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: #202124;
+  color: #aaa;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  line-height: 0.95;
+  margin: 0;
+  letter-spacing: -3px;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 24px auto;
+  color: #8c8c93;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.section {
+  padding: 60px 30px;
+  text-align: center;
+  border-top: 1px solid #181818;
+}
+
+.section h2,
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.section p,
+.cta p {
+  color: #8c8c93;
+}
+
+.cards {
+  max-width: 1050px;
+  margin: 36px auto;
+  display: grid;
+  gap: 18px;
+}
+
+/* FEATURE CARD */
+
+.feature-card {
+  background: #1b1b1f;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+}
+
+.feature-card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #8d8d94;
+  line-height: 1.5;
+}
+
+.icon,
+.logo {
+  min-width: 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #292a2f;
+  display: grid;
+  place-items: center;
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.stat-card {
+  border-right: 1px solid #242424;
+}
+
+.stat-card:last-child {
+  border-right: 0;
+}
+
+.stat-card b {
+  font-size: 30px;
+  display: block;
+}
+
+.stat-card span {
+  color: #8c8c93;
+  font-size: 13px;
+}
+
+/* CTA */
+
+.cta {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.cta p {
+  max-width: 580px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+
+/* FOOTER */
+
+.footer {
+  height: 54px;
+  border-top: 1px solid #151515;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  color: #777;
+  font-size: 12px;
+}
+
+/* AUTH */
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #080808;
+}
+
+.auth-left,
+.auth-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.auth-left {
+  max-width: 560px;
+  margin: auto;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.auth-brand h1 {
+  font-size: 34px;
+  margin: 0;
+}
+
+.auth-subtitle {
+  color: #8c8c93;
+  margin: 24px 0 32px;
+  line-height: 1.6;
+}
+
+.auth-features {
+  display: grid;
+  gap: 18px;
+}
+
+.auth-right {
+  background: radial-gradient(circle at center, #17171a, #08080a 55%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 470px;
+  margin: auto;
+  background: #1b1b1f;
+  border: 1px solid #38383d;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 30px 100px rgba(255, 255, 255, 0.05);
+}
+
+.auth-card h2 {
+  font-size: 32px;
+  margin: 0 0 5px;
+}
+
+.auth-card p {
+  color: #8c8c93;
+}
+
+label {
+  display: block;
+  margin-top: 22px;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  margin-top: 8px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #3c3c42;
+  background: #2a2a2f;
+  color: white;
+  outline: none;
+}
+
+input::placeholder {
+  color: #8d8d94;
+}
+
+.forgot-password {
+  text-align: right;
+  margin: 14px 0;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.terms-box {
+  margin: 22px 0;
+  background: #2a2a2f;
+  border: 1px solid #3c3c42;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  color: #ddd;
+}
+
+.terms-box input {
+  width: auto;
+  margin: 2px 0 0;
+}
+
+.submit-btn,
+.google-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background: white;
+  color: black;
+  border: 0;
+}
+
+.google-btn {
+  background: #2a2a2f;
+  color: white;
+  border: 1px solid #4a4a50;
+}
+
+.divider {
+  text-align: center;
+  color: #777;
+  margin: 24px 0;
+  letter-spacing: 8px;
+  font-size: 12px;
+}
+
+.switch-page {
+  text-align: center;
+  font-size: 14px;
+}
+
+.switch-page a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-left,
+  .auth-right {
+    padding: 40px 24px;
+  }
+
+  .auth-left {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav {
+    padding: 0 16px;
+  }
+
+  .nav-actions {
+    gap: 4px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding-top: 70px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+    letter-spacing: -2px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .stat-card {
+    border-right: 0;
+  }
+
+  .footer {
+    height: auto;
+    padding: 20px;
+    gap: 12px;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* DASHBOARD LAYOUT */
+
+.dashboard-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 35%),
+    #050505;
+  color: white;
+}
+
+.sidebar {
+  border-right: 1px solid #262626;
+  background: rgba(21, 25, 25, 0.85);
+  padding: 28px 28px;
+}
+
+.sidebar-logo h2 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -1px;
+}
+
+.sidebar-logo p {
+  color: #9b9b9b;
+  margin: 12px 0 42px;
+  font-size: 13px;
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #d5d5d5;
+  padding: 14px 16px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.sidebar-link.active {
+  background: white;
+  color: black;
+}
+
+.dashboard-main {
+  min-height: 100vh;
+}
+
+/* GOAL PLANNER */
+
+.goal-page {
+  min-height: 100vh;
+  padding: 100px 40px;
+}
+
+.goal-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.goal-header h1 {
+  margin: 0;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.goal-header p {
+  color: #c4c4c4;
+  max-width: 520px;
+  margin: 20px auto 0;
+  line-height: 1.6;
+}
+
+.goal-card {
+  max-width: 670px;
+  margin: 0 auto;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 48px;
+  background: rgba(8, 8, 8, 0.65);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px 34px;
+}
+
+.goal-card label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+}
+
+.field-title {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.goal-card input {
+  margin-top: 12px;
+  border-radius: 0;
+  border: 1px solid #eaeaea;
+  background: white;
+  color: black;
+  padding: 17px 18px;
+}
+
+.gender-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.gender-btn {
+  height: 53px;
+  border: 1px solid #333;
+  background: transparent;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.gender-btn.active {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+.goal-divider {
+  height: 1px;
+  background: #242424;
+  margin: 36px 0;
+}
+
+.generate-btn {
+  width: 100%;
+  height: 65px;
+  border: 0;
+  background: white;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* PLACEHOLDER PAGES */
+
+.coming-soon {
+  padding: 100px;
+}
+
+.coming-soon h1 {
+  font-size: 56px;
+  margin: 0 0 12px;
+}
+
+.coming-soon p {
+  color: #aaa;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .sidebar-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .goal-header h1 {
+    font-size: 44px;
+  }
+
+  .goal-card {
+    padding: 28px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── FORM FEEDBACK ─────────────────────────────────────────── */
+
+.form-error {
+  background: rgba(255, 70, 70, 0.12);
+  border: 1px solid rgba(255, 70, 70, 0.4);
+  color: #ff8080;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-success {
+  background: rgba(70, 200, 120, 0.12);
+  border: 1px solid rgba(70, 200, 120, 0.4);
+  color: #6dda9a;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ── ACTIVITY SELECT ───────────────────────────────────────── */
+
+.activity-select {
+  width: 100%;
+  padding: 16px;
+  border-radius: 0;
+  border: 1px solid #eaeaea;
+  background: white;
+  color: black;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ── PLAN RESULT ───────────────────────────────────────────── */
+
+.plan-result {
+  text-align: left;
+}
+
+.plan-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(255, 200, 50, 0.1);
+  border: 1px solid rgba(255, 200, 50, 0.35);
+  color: #ffd966;
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.plan-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.plan-stat {
+  background: #111;
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.plan-stat-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.plan-stat-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.plan-summary {
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.plan-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.generate-btn.outline {
+  background: transparent;
+  color: white;
+  border: 1px solid #444;
+}
+
+/* ── LOADING SCREEN ────────────────────────────────────────── */
+
+.loading-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 16px;
+}
+
+/* ── DASHBOARD CONTENT ─────────────────────────────────────── */
+
+.dashboard-content {
+  padding: 40px;
+  max-width: 1000px;
+}
+
+.dash-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.dash-header h1 {
+  font-size: 36px;
+  margin: 0 0 6px;
+  letter-spacing: -1.5px;
+}
+
+.dash-sub {
+  color: #777;
+  margin: 0;
+  font-size: 14px;
+}
+
+.streak-badge {
+  background: rgba(255, 120, 50, 0.15);
+  border: 1px solid rgba(255, 120, 50, 0.4);
+  color: #ff8c42;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Stat cards */
+
+.dash-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.dash-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #111;
+  border: 1px solid #252525;
+  border-radius: 10px;
+  padding: 16px 20px;
+  min-width: 160px;
+}
+
+.dash-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #1f1f22;
+  display: grid;
+  place-items: center;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.dash-stat-val {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.dash-stat-label {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Section */
+
+.dash-section {
+  margin-bottom: 32px;
+}
+
+.dash-section h2 {
+  font-size: 20px;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+
+/* Plan card */
+
+.plan-card {
+  background: #111;
+  border: 1px solid #252525;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.plan-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.plan-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.plan-card-meta {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* Exercise list */
+
+.exercise-list {
+  display: grid;
+  gap: 10px;
+}
+
+.exercise-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: #0d0d0d;
+  border: 1px solid #1e1e1e;
+  border-radius: 8px;
+}
+
+.exercise-name {
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-badge {
+  background: rgba(100, 180, 255, 0.15);
+  border: 1px solid rgba(100, 180, 255, 0.35);
+  color: #64b4ff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.exercise-detail {
+  font-size: 13px;
+  color: #888;
+}
+
+/* Start button */
+
+.start-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: black;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.start-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── WORKOUT HISTORY ───────────────────────────────────────── */
+
+.session-list {
+  display: grid;
+  gap: 12px;
+}
+
+.session-card {
+  background: #111;
+  border: 1px solid #252525;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  cursor: pointer;
+}
+
+.session-date {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.session-meta {
+  font-size: 13px;
+  color: #888;
+}
+
+.session-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.badge.green {
+  background: rgba(70, 200, 120, 0.12);
+  color: #6dda9a;
+  border: 1px solid rgba(70, 200, 120, 0.3);
+}
+
+.badge.grey {
+  background: #1e1e1e;
+  color: #888;
+  border: 1px solid #2c2c2c;
+}
+
+.session-expand {
+  color: #555;
+  font-size: 12px;
+}
+
+.session-logs {
+  border-top: 1px solid #1a1a1a;
+  padding: 14px 22px;
+  display: grid;
+  gap: 8px;
+}
+
+.log-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.log-name {
+  font-weight: 600;
+}
+
+.log-detail {
+  color: #888;
+}
+
+.log-bad {
+  color: #ff8080;
+}
+
+.log-check {
+  color: #6dda9a;
+}
+
+/* ── PROFILE ───────────────────────────────────────────────── */
+
+.outline-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.outline-btn:hover {
+  border-color: #555;
+  color: white;
+}
+
+/* ── RESPONSIVE (DASHBOARD) ────────────────────────────────── */
+
+@media (max-width: 700px) {
+  .dashboard-content {
+    padding: 20px;
+  }
+
+  .plan-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-card-top {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .dash-stats {
+    gap: 10px;
+  }
+
+  .dash-stat-card {
+    min-width: 140px;
+  }
+}
+
+/* ── EXERCISE SELECTION ─────────────────────────────────────────────────── */
+
+.exercise-select-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+}
+
+.exercise-select-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.exercise-select-info {
+  flex: 1;
+}
+
+.exercise-select-name {
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.exercise-select-detail {
+  color: #aaa;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── ROADMAP DETAIL (week-by-week plan view) ─────────────────────────────── */
+
+.roadmap-summary-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 28px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.roadmap-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.roadmap-warning {
+  color: #f5a623;
+  font-size: 12px;
+  flex-basis: 100%;
+}
+
+/* Week accordion block */
+.roadmap-week-block {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #252525;
+}
+
+.roadmap-week-header {
+  width: 100%;
+  background: #111;
+  border: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  transition: background 0.15s;
+}
+
+.roadmap-week-header:hover {
+  background: #1a1a1a;
+}
+
+.roadmap-week-header.roadmap-week-current {
+  background: #00bfa508;
+  border-bottom: 1px solid #00bfa522;
+}
+
+.roadmap-week-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.roadmap-week-num {
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.roadmap-current-badge {
+  background: #00bfa522;
+  color: #00bfa5;
+  border: 1px solid #00bfa544;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.roadmap-week-progress {
+  font-size: 12px;
+  color: #666;
+}
+
+.roadmap-toggle-icon {
+  font-size: 11px;
+  color: #555;
+}
+
+/* Days grid — 7 columns on wide screens */
+.roadmap-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  background: #0d0d0d;
+  padding: 16px;
+  gap: 10px;
+}
+
+/* Day card */
+.roadmap-day-card {
+  background: #131313;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.roadmap-day-card.roadmap-day-today {
+  border-color: #00bfa5;
+  box-shadow: 0 0 0 1px #00bfa522;
+}
+
+.roadmap-day-card.roadmap-day-done {
+  opacity: 0.65;
+}
+
+.roadmap-day-card.roadmap-day-rest {
+  background: #0e0e0e;
+  border-color: #1a1a1a;
+}
+
+.roadmap-day-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.roadmap-day-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.roadmap-day-name {
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.roadmap-day-date {
+  font-size: 10px;
+  color: #666;
+}
+
+.roadmap-day-badges {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.roadmap-today-pill {
+  background: #00bfa5;
+  color: #000;
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.roadmap-rest-body {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #444;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.roadmap-day-calories {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #00bfa5;
+  font-weight: 600;
+}
+
+.roadmap-exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.roadmap-exercise-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.roadmap-exercise-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #ccc;
+  font-weight: 500;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.roadmap-exercise-detail {
+  font-size: 10px;
+  color: #666;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Responsive: collapse to 2 columns on tablet, 1 column on mobile */
+@media (max-width: 1100px) {
+  .roadmap-days-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .roadmap-days-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .roadmap-days-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── LIVE WORKOUT (in-browser webcam AI) ─────────────────────────────────── */
+
+.live-workout-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+}
+
+/* Idle / start card */
+.live-workout-idle-card {
+  background: #111;
+  border: 1px solid #252525;
+  border-radius: 16px;
+  padding: 36px 32px;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.live-workout-idle-card h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.live-workout-idle-card p {
+  color: #aaa;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.live-workout-icon-ring {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: #00bfa511;
+  border: 2px solid #00bfa533;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.live-workout-tips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.live-workout-tips li {
+  color: #bbb;
+  font-size: 13px;
+  padding: 8px 14px;
+  background: #161616;
+  border-radius: 8px;
+}
+
+/* Loading spinner */
+.live-workout-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Top bar during active workout */
+.live-workout-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0 12px;
+  border-bottom: 1px solid #1e1e1e;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.live-workout-title {
+  font-weight: 800;
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.live-workout-subtitle {
+  font-size: 13px;
+  color: #888;
+}
+
+/* Canvas container */
+.live-workout-canvas-wrap {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  /* 16:9 aspect ratio */
+  aspect-ratio: 16 / 9;
+  max-height: calc(100vh - 280px);
+}
+
+.live-workout-canvas-wrap:fullscreen {
+  max-height: 100vh;
+  border-radius: 0;
+}
+
+.live-workout-video-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.live-workout-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* Stats bar below canvas */
+.live-workout-stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #111;
+  border: 1px solid #1e1e1e;
+  border-radius: 12px;
+  margin-top: 12px;
+  padding: 12px 0;
+  overflow: hidden;
+}
+
+.lw-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 12px;
+  border-right: 1px solid #1e1e1e;
+  min-width: 0;
+}
+
+.lw-stat:last-child {
+  border-right: none;
+}
+
+.lw-stat-val {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.lw-stat-label {
+  font-size: 11px;
+  color: #666;
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lw-feedback {
+  flex: 3;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.lw-feedback-text {
+  font-size: 13px;
+  color: #f0d040;
+  font-weight: 600;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .live-workout-canvas-wrap {
+    max-height: 50vh;
+  }
+  .live-workout-stats-bar {
+    flex-wrap: wrap;
+  }
+  .lw-stat {
+    min-width: 80px;
+  }
+  .lw-feedback {
+    flex-basis: 100%;
+    border-right: none;
+    border-top: 1px solid #1e1e1e;
+  }
+}
+
+/* ── EXERCISE SELECTION — camera tip & AI card highlight ─────────────────── */
+
+.exercise-select-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #00bfa509;
+  border: 1px solid #00bfa522;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 16px;
+  max-width: 680px;
+  line-height: 1.5;
+}
+
+.exercise-select-card-ai {
+  border-color: #00bfa533 !important;
+}
+
+.exercise-select-card-ai:hover {
+  border-color: #00bfa566 !important;
+  background: #00bfa506 !important;
+}

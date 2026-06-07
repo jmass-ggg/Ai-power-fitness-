@@ -1,0 +1,32 @@
+version: "3.9"
+
+# Production overrides — use with:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+  db:
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # no port exposure in prod — internal network only
+    ports: []
+
+  backend:
+    build:
+      target: production
+    volumes: []
+    command: >
+      sh -c "python manage.py migrate --no-input &&
+             python manage.py collectstatic --no-input &&
+             gunicorn backend.wsgi:application --bind 0.0.0.0:8000 --workers 4"
+
+  frontend:
+    build:
+      target: production
+    volumes: []
+    ports:
+      - "80:80"
+      - "443:443"
+
+volumes:
+  postgres_data:

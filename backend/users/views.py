@@ -15,6 +15,8 @@ from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 from .serializers import (
     RegisterSerializer,
@@ -59,7 +61,9 @@ ErrorResponseSerializer = inline_serializer(
 )
 
 
+@method_decorator(csrf_exempt, name="dispatch")
 class RegisterView(APIView):
+    authentication_classes = []   # don't run JWT auth — no token exists yet
     permission_classes = [AllowAny]
 
     @extend_schema(
@@ -105,7 +109,9 @@ class RegisterView(APIView):
         )
 
 
+@method_decorator(csrf_exempt, name="dispatch")
 class LoginView(APIView):
+    authentication_classes = []   # no token exists at login time
     permission_classes = [AllowAny]
 
     @extend_schema(
@@ -167,7 +173,9 @@ class LoginView(APIView):
         return response
 
 
+@method_decorator(csrf_exempt, name="dispatch")
 class RefreshTokenView(APIView):
+    authentication_classes = []   # access token is expired — can't auth with it
     permission_classes = [AllowAny]
 
     @extend_schema(

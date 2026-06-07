@@ -17,6 +17,7 @@ import {
 import DashboardLayout from "../components/DashboardLayout.jsx";
 import useWebcamPose from "../hooks/useWebcamPose.js";
 import { saveAIResult } from "../api/client.js";
+import { unlockSpeech, speak } from "../hooks/useSpeech.js";
 
 export default function LiveWorkout() {
   const { state }  = useLocation();
@@ -195,6 +196,18 @@ export default function LiveWorkout() {
               onClick={pose.start}
             >
               <Camera size={16} /> Start AI Webcam Workout
+            </button>
+            {/* Speech test — confirms voice works before starting */}
+            <button
+              className="btn ghost"
+              style={{ width: "100%", justifyContent: "center", marginTop: 8, fontSize: 13 }}
+              onClick={() => {
+                unlockSpeech();
+                // Small delay lets the silent unlock utterance finish, then speak
+                setTimeout(() => speak("Voice is working! Ready to count your reps.", "coach"), 300);
+              }}
+            >
+              🔊 Test Voice
             </button>
           </div>
         </section>

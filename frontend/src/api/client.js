@@ -1,6 +1,23 @@
 const BASE = "/api";
 
-let _refreshing = null;
+let _refreshPromise = null;
+
+async function tryRefresh() {
+  if (!_refreshPromise) {
+    _refreshPromise = fetch(`${BASE}/users/auth/refresh/`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    }).then((r) => {
+      _refreshPromise = null;
+      return r.ok;
+    }).catch(() => {
+      _refreshPromise = null;
+      return false;
+    });
+  }
+  return _refreshPromise;
+}
 
 async function request(path, options = {}, _retry = false) {
   const res = await fetch(`${BASE}${path}`, {
@@ -11,20 +28,19 @@ async function request(path, options = {}, _retry = false) {
 
   if (res.status === 204) return null;
 
-  // On 401, try refreshing the token once
-  if (res.status === 401 && !_retry && path !== "/users/auth/refresh/") {
-    if (!_refreshing) {
-      _refreshing = fetch(`${BASE}/users/auth/refresh/`, {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-      }).finally(() => { _refreshing = null; });
-    }
-    const refreshRes = await _refreshing;
-    if (refreshRes.ok) {
+  // On 401, try refreshing once (skip for auth endpoints to avoid loops)
+  if (
+    res.status === 401 &&
+    !_retry &&
+    path !== "/users/auth/refresh/" &&
+    path !== "/users/auth/login/"
+  ) {
+    const refreshed = await tryRefresh();
+    if (refreshed) {
       return request(path, options, true);
     }
-    // Refresh failed — let the original 401 propagate
+    // Refresh failed — throw so callers can redirect to login
+    throw new Error("Session expired. Please log in again.");
   }
 
   const data = await res.json().catch(() => ({}));

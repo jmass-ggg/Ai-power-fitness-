@@ -18,6 +18,7 @@ import {
   CALORIES_PER_REP,
   PLANK_CALORIES_PER_SECOND,
 } from "../lib/exerciseLogic.js";
+import { speak, stopSpeech, unlockSpeech } from "./useSpeech.js";
 
 // Match the installed package version exactly
 const MP_CDN = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/wasm";
@@ -58,26 +59,57 @@ function calcCalories(exerciseName, totalReps) {
 // have lm.x = 0 (left edge of the RAW camera frame) → 1 (right edge).
 // To align with the mirrored video we must mirror the x coordinate:
 //   mirroredX = (1 - lm.x) * w
+//
+// Visibility threshold matches exerciseLogic.js MIN_VISIBILITY = 0.3
+const SKELETON_MIN_VIS = 0.3;
+
 function drawSkeleton(ctx, landmarks, w, h) {
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "rgba(80,220,120,0.85)";
+  // ── Connections (bones) ──────────────────────────────────────────────────
   for (const [a, b] of POSE_CONNECTIONS) {
     const lmA = landmarks[a], lmB = landmarks[b];
     if (!lmA || !lmB) continue;
-    if ((lmA.visibility ?? 1) < 0.05 || (lmB.visibility ?? 1) < 0.05) continue;
+    if ((lmA.visibility ?? 1) < SKELETON_MIN_VIS || (lmB.visibility ?? 1) < SKELETON_MIN_VIS) continue;
+
+    const x1 = (1 - lmA.x) * w, y1 = lmA.y * h;
+    const x2 = (1 - lmB.x) * w, y2 = lmB.y * h;
+
+    // Outer glow for visibility against any background
     ctx.beginPath();
-    ctx.moveTo((1 - lmA.x) * w, lmA.y * h);
-    ctx.lineTo((1 - lmB.x) * w, lmB.y * h);
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = "rgba(0,0,0,0.45)";
+    ctx.lineWidth   = 7;
+    ctx.stroke();
+
+    // Main coloured line
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = "rgba(80,220,120,0.95)";
+    ctx.lineWidth   = 3;
     ctx.stroke();
   }
+
+  // ── Joints (dots) ────────────────────────────────────────────────────────
   for (const lm of landmarks) {
-    if ((lm.visibility ?? 1) < 0.05) continue;
+    if ((lm.visibility ?? 1) < SKELETON_MIN_VIS) continue;
+    const x = (1 - lm.x) * w;
+    const y = lm.y * h;
+
+    // Outer ring
     ctx.beginPath();
-    ctx.arc((1 - lm.x) * w, lm.y * h, 4, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(40,230,240,0.9)";
+    ctx.arc(x, y, 7, 0, Math.PI * 2);
+    ctx.fillStyle   = "rgba(0,0,0,0.5)";
     ctx.fill();
-    ctx.strokeStyle = "rgba(255,255,255,0.8)";
-    ctx.lineWidth = 1;
+
+    // Inner dot
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fillStyle   = "rgba(40,230,240,0.95)";
+    ctx.fill();
+
+    ctx.strokeStyle = "rgba(255,255,255,0.9)";
+    ctx.lineWidth   = 1.5;
     ctx.stroke();
   }
 }
@@ -364,6 +396,11 @@ export default function useWebcamPose({
   const phaseRef             = useRef("idle");
   const renderLoopRef        = useRef(null);        // holds the RAF callback itself
 
+  // Voice assistant refs
+  const lastSpokenRepRef       = useRef(0);   // last rep count we announced
+  const lastBadFormSpokenRef   = useRef(0);   // timestamp so we don't spam "do it properly"
+  const noPersonWarnedRef      = useRef(false);
+
   // React state (only for UI display)
   const [phase, setPhaseState]       = useState("idle");
   const [displayReps, setDispReps]   = useState(0);
@@ -488,6 +525,8 @@ export default function useWebcamPose({
     stateRef.current = createState(exerciseName);
     setStartRef.current = performance.now();
     waitingNextSetRef.current = false;
+    lastSpokenRepRef.current  = 0;  // reset rep counter voice for new set
+    speak(`Set ${currentSetRef.current}. Let's go!`, "coach");
     setPhase("active");
   }
 
@@ -502,9 +541,11 @@ export default function useWebcamPose({
 
     if (isLast) {
       allDoneRef.current = true;
+      speak(`Workout complete! Great job! You did ${totalRepsRef.current} reps.`, "coach");
       setPhase("all_done");
     } else {
       waitingNextSetRef.current = true;
+      speak(`Set ${currentSetRef.current} complete! Get ready for set ${currentSetRef.current + 1}.`, "coach");
       setPhase("set_done");
       nextSetTimerRef.current = setTimeout(advanceToNextSet, 3000);
     }
@@ -550,7 +591,10 @@ export default function useWebcamPose({
     if (video.readyState >= 2) {
       try {
         const result = lm.detectForVideo(video, tsMs);
-        if (result.landmarks?.length > 0) landmarks = result.landmarks[0];
+        if (result.landmarks?.length > 0) {
+          landmarks = result.landmarks[0];
+          noPersonWarnedRef.current = false; // person re-appeared, allow warning again later
+        }
       } catch (e) {
         console.warn("[pose] detectForVideo error:", e.message);
       }
@@ -604,6 +648,9 @@ export default function useWebcamPose({
         caloriesRef.current = calcCalories(exerciseName, totalRepsRef.current + state.reps);
       }
 
+      // Always draw skeleton on top of the video frame
+      drawSkeleton(ctx, landmarks, cw, ch);
+
       // Posture events on bad reps
       if (state.reps > oldReps && state.formScore < 70) {
         incorrectRepsRef.current += 1;
@@ -616,9 +663,24 @@ export default function useWebcamPose({
             Object.entries(metrics).map(([k, v]) => [k, v != null ? parseFloat(v.toFixed(2)) : null])
           ),
         });
+        // Voice: bad form on a counted rep — dedup handles throttle
+        speak("Do it properly!", "coach");
       }
 
-      drawSkeleton(ctx, landmarks, cw, ch);
+      // Voice: count each new rep aloud (dedup prevents re-firing on same rep across frames)
+      if (exerciseName !== "Plank" && state.reps > lastSpokenRepRef.current) {
+        lastSpokenRepRef.current = state.reps;
+        speak(String(state.reps), "rep");
+      }
+
+      // Voice: persistent bad posture mid-rep (not a new rep, just bad angle)
+      if (
+        exerciseName !== "Plank" &&
+        state.formScore < 50 &&
+        state.reps === oldReps
+      ) {
+        speak("Do it properly!", "coach");
+      }
 
       // ── Plank countdown big number overlay ──────────────────────────────
       if (exerciseName === "Plank" && state.position === "COUNTDOWN") {
@@ -629,10 +691,16 @@ export default function useWebcamPose({
       if (exerciseName === "Plank" && state.position === "RESET" && state.plankFormBad) {
         drawPlankAlarm(ctx, cw, ch);
         if (plankAlarmNow) playAlarmBeep();
+        speak("Fix your form! Straighten your body.", "coach");
       }
     } else {
       state.feedback  = "No person detected — step into view.";
       state.formScore = 0;
+      // Voice: warn once, then only after person re-appears and disappears again
+      if (!noPersonWarnedRef.current) {
+        noPersonWarnedRef.current = true;
+        speak("Step back so your full body is in frame.", "info");
+      }
       if (exerciseName === "Plank") {
         state.plankStartTime          = null;
         state.plankSeconds            = 0;
@@ -640,6 +708,7 @@ export default function useWebcamPose({
         state.plankCountdownDone      = false;
       }
     }
+
 
     // Draw HUD
     drawHUD(
@@ -666,6 +735,9 @@ export default function useWebcamPose({
 
   // ── Public: start ─────────────────────────────────────────────────────────
   const start = useCallback(async () => {
+    // MUST be first — unlocks speechSynthesis while still in the click handler context
+    unlockSpeech();
+
     setPhase("loading");
     setErrorMsg("");
 
@@ -689,9 +761,13 @@ export default function useWebcamPose({
       allDoneRef.current        = false;
       waitingNextSetRef.current = false;
       lastTsRef.current         = -1;
+      lastSpokenRepRef.current  = 0;
+      lastBadFormSpokenRef.current = 0;
+      noPersonWarnedRef.current = false;
       stateRef.current          = createState(exerciseName);
 
       setPhase("active");
+      speak(`Starting ${exerciseName}. Set 1. Let's go!`, "coach");
       animFrameRef.current = requestAnimationFrame(renderLoopRef.current);
     } catch (err) {
       console.error("[useWebcamPose] start error:", err);
@@ -738,6 +814,7 @@ export default function useWebcamPose({
       if (landmarkerRef.current) {
         try { landmarkerRef.current.close(); } catch (_) {}
       }
+      stopSpeech();
     };
   }, []);
 

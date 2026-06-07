@@ -89,3 +89,5 @@ docker-compose.override.yml.env
 venv/
 __pycache__/
 *.pyc
+scipt.txt
+tell_project.txt
